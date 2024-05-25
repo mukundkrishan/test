@@ -5,9 +5,14 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Create
         </button>
-        @if (session('status'))
+        @if (session('success'))
             <div class="alert alert-success" role="alert">
-                {{ session('status') }}
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('fail'))
+            <div class="alert alert-fail" role="alert">
+                {{ session('fail') }}
             </div>
         @endif
         <div class="row justify-content-center">
@@ -116,14 +121,7 @@
             }
         }
     </script>
-    <script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable({
-            paging: true,
-            pageLength: 3
-        });
-    });
-    </script>
+    
     <script>
         function edit(id){
             $.ajax({

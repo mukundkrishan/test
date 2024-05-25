@@ -54,4 +54,15 @@ class Crud extends Model
         ]);
         return $item_id;
     }
+
+    public function updates($data){
+        $crud = $this->table;
+        $item_id = DB::table($crud)->where('id',$data['id'])
+        ->update([
+            'name' => $data['editname'],
+            'description' => $data['editdesc'],
+            'image' => $data['imagepath'] ?? null,
+        ]);
+        return $item_id;
+    }
 }

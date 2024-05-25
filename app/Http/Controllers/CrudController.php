@@ -40,6 +40,22 @@ class CrudController extends Controller
         }
       
     }
+    public function update(Request $request){
+        $modalDataSave = new Crud();
+        $get_id = $modalDataSave->updates($request);
+        if ($request->hasFile('file')) {
+            $imagePath = $request->file('file')->store('images', 'public');
+            $request['imagepath'] = $imagePath;
+        }
+        if($get_id!=''){
+            return back()->with('success', 'Updated successfully.');
+            // return response()->json(['success' => true, 'message' => 'Updated successfully.']);
+        }else{
+            return back()->with(['fail' => true, 'message' => 'Error']);
+
+        }
+      
+    }
     public function show(Request $request){
         $modalDataSave = new Crud();
         $getDetails = $modalDataSave->show($request['id']);

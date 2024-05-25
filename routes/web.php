@@ -23,6 +23,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::post('/cruds', [App\Http\Controllers\CrudController::class, 'save'])->name('add');
     Route::post('/edit/{id}', [App\Http\Controllers\CrudController::class, 'show'])->name('read');
+    Route::post('/edit_save', [App\Http\Controllers\CrudController::class, 'update'])->name('editSave');
 
     Route::post('/delete', [App\Http\Controllers\CrudController::class, 'remove'])->name('delete');
 
